@@ -6,6 +6,9 @@ const hbs = require("hbs");
 const Register = require("./models/register");
 const mongoose= require("mongoose");
 require("./db/conn");
+const ec = path.join(__dirname, "../.env");
+require("dotenv").config({path: ec});
+
 
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");

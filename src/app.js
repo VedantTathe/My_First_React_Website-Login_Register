@@ -45,16 +45,7 @@ app.post("/register", async (req, res)=>{
         console.log(req.body.lastname);
         console.log(req.body.email);
         console.log(req.body.pswd);
-        const email = req.body.email;
 
-        const user = await Register.findOne({email:email})
-        
-        if(user.email ==  email)
-        {
-            res.send("<h1>User Already Exist</h1></br><h1>Please Login..!</h1>")
-        }
-        else
-        {
              const Registerschema = new Register({
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -64,15 +55,14 @@ app.post("/register", async (req, res)=>{
             const registered = await Registerschema.save()
             res.status(201).render("index");
 
-        }
+        
         
     }
     catch(error)
     {
-        res.send("<h1>User Already Exist</h1></br><h1>Please Login..!</h1>")
-       
+        res.status(400).send("error");
+    
         console.log(error);
-        // res.status(400).send("error");
     }
     
     
